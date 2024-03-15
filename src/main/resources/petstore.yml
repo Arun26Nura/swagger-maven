@@ -1,0 +1,49 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /emmployee:
+    post:
+      tags:
+        - employee-controller
+      summary: Open API for Employee
+      description: This is a Open API fpr Get Employee Details
+      operationId: getEmployeeDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeRequest'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeResponse'
+components:
+  schemas:
+    EmployeeResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date
+    EmployeeRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
